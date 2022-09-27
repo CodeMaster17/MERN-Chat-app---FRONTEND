@@ -1,16 +1,18 @@
 import { Button, ButtonGroup } from '@chakra-ui/react'
 import { Route } from 'react-router-dom'
-import ChatPage from './Components/ChatPage';
-import HomePage from './Components/HomePage';
+import ChatPage from './Components/Pages/ChatPage';
+import HomePage from './Components/Pages/HomePage';
+import './App.css'
 
 console.log("app file ran");
 
 function App() {
   return (
     <div className="App">
-      <Route path='/' component={HomePage} />
+      {/* importing the multiple pages */}
+
+      <Route path='/' component={HomePage} exact />       {/* using the attribute exact to import only homepage component coz the / address is present in both the paths */}
       <Route path='/chats' component={ChatPage} />
-      <h1>hello</h1>
     </div>
   );
 }
