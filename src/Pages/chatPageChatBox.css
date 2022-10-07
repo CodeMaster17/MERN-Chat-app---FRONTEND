@@ -1,0 +1,12 @@
+.ChatPageChatBox {
+    display: flex;
+}
+
+.MyChats {
+    background-color: red;
+}
+
+.ChatBox {
+    background-color: red;
+
+}

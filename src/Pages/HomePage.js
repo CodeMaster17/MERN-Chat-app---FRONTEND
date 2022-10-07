@@ -1,5 +1,5 @@
 // for home page
-import React from 'react'
+import React, { useEffect } from 'react'
 import {
     Container,
     Box,
@@ -10,12 +10,24 @@ import {
     TabPanels,
     TabPanel
 } from '@chakra-ui/react'
-import Login from '../Authentication/Login';
-import SignUp from '../Authentication/SignUp';
+import Login from '../Components/Authentication/Login';
+import SignUp from '../Components/Authentication/SignUp';
+import { useHistory } from 'react-router-dom';
 
 
 const HomePage = () => {
+
+    const history = useHistory();
+    useEffect(() => {
+        const user = JSON.parse(localStorage.getItem("userInfo"));
+
+
+        if (user) history.push("/chats");
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [history]);
+
     return (
+
         <Container maxW='xl' centerContent> {/* Helps to make the project responsive*/}
 
             {/* We use chakra Ui tags instead of normal Ui tags because we can add inline styling inside the tag itself*/}
@@ -36,6 +48,7 @@ const HomePage = () => {
                     fontSize="4xl"
                     fontFamily="work sans"
                     color="black"
+                    fontWeight='bold'
                 >Chattingz</Text>
 
             </Box>
@@ -58,16 +71,14 @@ const HomePage = () => {
                     <TabPanels>
                         <TabPanel>
                             <Login />
-                            <p>one!</p>
                         </TabPanel>
                         <TabPanel>
                             <SignUp />
-                            <p>two!</p>
                         </TabPanel>
                     </TabPanels>
                 </Tabs>
             </Box>
-        </Container>
+        </Container >
     )
 }
 
